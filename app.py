@@ -2,10 +2,10 @@ import streamlit as st
 import requests
 import os
 import pickle
-
+#https://drive.google.com/drive/folders/134ADdaIJWUTCjLCXgtMqmXzdeZ3k13Xv?usp=sharing
 # Function to download the file from Google Drive
 def download_file_from_drive(file_id, destination):
-    url = f"https://drive.google.com/uc?id={file_id}"
+    url = f"https://drive.google.com/uc?id=134ADdaIJWUTCjLCXgtMqmXzdeZ3k13Xv"
     response = requests.get(url)
     
     if response.status_code == 200:
