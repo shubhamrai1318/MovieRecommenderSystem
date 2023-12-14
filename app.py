@@ -1,25 +1,34 @@
 import streamlit as st
-import pickle
 import requests
+import joblib
+import gdown
+import os
 
 # Function to download the file from Google Drive
 def download_file_from_drive(file_id, destination):
     url = f"https://drive.google.com/uc?id={file_id}"
     response = requests.get(url)
-    with open(destination, 'wb') as file:
-        file.write(response.content)
+    
+    if response.status_code == 200:
+        with open(destination, 'wb') as file:
+            file.write(response.content)
+    else:
+        st.error(f"Failed to download file. Status Code: {response.status_code}")
 
 # Specify the Google Drive file IDs
-movies_drive_file_id = "your_movies_file_id"
-similarity_drive_file_id = "your_similarity_file_id"
+movies_drive_file_id = "https://drive.google.com/file/d/1x06lLB1_k-8Nt-ciWlq60qI0_kd_zBAD/view?usp=sharing"
+similarity_drive_file_id = "https://drive.google.com/file/d/1DUrNc3xt4PgqnTFdZWOc6W_NP-pvKn9o/view?usp=sharing"
 
 # Download the movies_list.pkl and similarity.pkl files
-# download_file_from_drive(movies_drive_file_id, "movies_list.pkl")
-download_file_from_drive(similarity_drive_file_id, "similarity.pkl")
+if not os.path.isfile("movies_list.pkl"):
+    download_file_from_drive(movies_drive_file_id, "movies_list.pkl")
+
+if not os.path.isfile("similarity.pkl"):
+    download_file_from_drive(similarity_drive_file_id, "similarity.pkl")
 
 # Load the movies_list.pkl file
-movies = pickle.load(open("movies_list.pkl", 'rb'))
-similarity = pickle.load(open("similarity.pkl", 'rb'))
+movies = joblib.load("movies_list.pkl")
+similarity = joblib.load("similarity.pkl")
 movies_list = movies['title'].values
 
 st.header("Movie Recommender System")
