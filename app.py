@@ -1,17 +1,11 @@
-
 import streamlit as st
 import pickle
 import requests
-import subprocess
 import gdown  # Import gdown here
-
-# Install gdown
-subprocess.run(["pip", "install", "gdown"])
 
 # Install gdown
 if not st.experimental_get_query_params():
     gdown.download("https://drive.google.com/uc?id=your_similarity_file_id", "similarity.pkl", quiet=False)
-
 
 # Function to download the file from Google Drive
 def download_file_from_drive(file_id, destination):
