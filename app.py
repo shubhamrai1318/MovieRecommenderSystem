@@ -1,19 +1,7 @@
 import streamlit as st
 import requests
 import os
-
-# Install necessary packages
-def install_packages():
-    try:
-        import joblib
-    except ImportError:
-        st.warning("Installing joblib...")
-        os.system("pip install joblib")
-    
-install_packages()
-
-# Import installed packages
-import joblib
+import pickle
 import gdown
 
 # Function to download the file from Google Drive
@@ -39,8 +27,12 @@ if not os.path.isfile("similarity.pkl"):
     download_file_from_drive(similarity_drive_file_id, "similarity.pkl")
 
 # Load the movies_list.pkl file
-movies = joblib.load("movies_list.pkl")
-similarity = joblib.load("similarity.pkl")
+with open("movies_list.pkl", 'rb') as file:
+    movies = pickle.load(file)
+
+with open("similarity.pkl", 'rb') as file:
+    similarity = pickle.load(file)
+
 movies_list = movies['title'].values
 
 st.header("Movie Recommender System")
