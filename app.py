@@ -52,9 +52,11 @@
 !pip install gdown
 import streamlit as st
 import pickle
-import gdown
 import requests
+import subprocess
 
+# Install gdown
+subprocess.run(["pip", "install", "gdown"])
 # Function to download the file from Google Drive
 def download_file_from_drive(file_id, destination):
     url = f"https://drive.google.com/file/d/1DUrNc3xt4PgqnTFdZWOc6W_NP-pvKn9o/view?usp=sharing"
