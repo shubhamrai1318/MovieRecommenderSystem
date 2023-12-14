@@ -49,7 +49,7 @@
 #     with col5:
 #         st.text(movie_name[4])
 #         st.image(movie_poster[4])
-
+!pip install gdown
 import streamlit as st
 import pickle
 import gdown
