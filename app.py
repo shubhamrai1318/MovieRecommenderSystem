@@ -1,3 +1,4 @@
+pip install gdown
 
 import streamlit as st
 import pickle
