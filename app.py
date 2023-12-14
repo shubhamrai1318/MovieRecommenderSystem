@@ -1,16 +1,13 @@
 import streamlit as st
 import pickle
 import requests
-import gdown  # Import gdown here
-
-# Install gdown
-if not st.experimental_get_query_params():
-    gdown.download("https://drive.google.com/uc?id=your_similarity_file_id", "similarity.pkl", quiet=False)
 
 # Function to download the file from Google Drive
 def download_file_from_drive(file_id, destination):
-    url = f"https://drive.google.com/file/d/1DUrNc3xt4PgqnTFdZWOc6W_NP-pvKn9o/view?usp=sharing"
-    gdown.download(url, destination, quiet=False)
+    url = f"https://drive.google.com/uc?id={file_id}"
+    response = requests.get(url)
+    with open(destination, 'wb') as file:
+        file.write(response.content)
 
 # Specify the Google Drive file IDs
 movies_drive_file_id = "your_movies_file_id"
