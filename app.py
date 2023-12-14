@@ -2,7 +2,6 @@ import streamlit as st
 import requests
 import os
 import pickle
-import gdown
 
 # Function to download the file from Google Drive
 def download_file_from_drive(file_id, destination):
