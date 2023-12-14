@@ -14,7 +14,7 @@ movies_drive_file_id = "your_movies_file_id"
 similarity_drive_file_id = "your_similarity_file_id"
 
 # Download the movies_list.pkl and similarity.pkl files
-download_file_from_drive(movies_drive_file_id, "movies_list.pkl")
+# download_file_from_drive(movies_drive_file_id, "movies_list.pkl")
 download_file_from_drive(similarity_drive_file_id, "similarity.pkl")
 
 # Load the movies_list.pkl file
