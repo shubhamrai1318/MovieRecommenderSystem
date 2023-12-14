@@ -15,8 +15,8 @@ def download_file_from_drive(file_id, destination):
         st.error(f"Failed to download file. Status Code: {response.status_code}")
 
 # Specify the Google Drive file IDs
-movies_drive_file_id = "your_movies_file_id"
-similarity_drive_file_id = "your_similarity_file_id"
+movies_drive_file_id = "https://drive.google.com/file/d/1x06lLB1_k-8Nt-ciWlq60qI0_kd_zBAD/view?usp=drive_link"
+similarity_drive_file_id = "https://drive.google.com/file/d/1DUrNc3xt4PgqnTFdZWOc6W_NP-pvKn9o/view?usp=sharing"
 
 # Download the movies_list.pkl and similarity.pkl files
 if not os.path.isfile("movies_list.pkl"):
